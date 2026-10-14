@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bytecode-ai-agent
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+
+anthropic:
+  api-key: ${ANTHROPIC_API_KEY:}
+  model: ${ANTHROPIC_MODEL:claude-sonnet-4-5}
+  base-url: ${ANTHROPIC_BASE_URL:https://api.anthropic.com/v1}
+  max-output-tokens: ${ANTHROPIC_MAX_TOKENS:1024}
+
+app:
+  analysis:
+    max-classes-per-request: ${MAX_CLASSES_PER_REQUEST:15}
+    max-snippet-chars: ${MAX_SNIPPET_CHARS:6000}
+    max-zip-bytes: ${MAX_ZIP_BYTES:52428800}
+  jadx:
+    executable: ${JADX_EXECUTABLE:jadx}
+    timeout-seconds: ${JADX_TIMEOUT_SECONDS:60}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.giansantos.bytecodeagent: INFO
